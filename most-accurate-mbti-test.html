@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<title>most accurate mbti test</title>
+			<meta charset="utf-8">
+
+			<style>
+				div {
+					margin-bottom: 1em;
+				}
+
+			</style>
+
+			<script>
+				function main() {
+					(window.input_names = ['letter1', 'letter2', 'letter3', 'letter4', 'validation'])
+					.forEach((choice_name) => {
+						document.getElementsByName(choice_name).forEach((choice) => {
+							choice.onchange = on_inputs_changed;
+						});
+					});
+				};
+
+				function on_inputs_changed() {
+					const type = window.input_names.map((input_name) => {
+						return document.getElementsByName(input_name);
+					}).map((inputs) => {
+						return Array.from(inputs).map((input) => {
+							return input.checked?input.value:'';
+						}).join('');
+					}).join('');
+
+					document.getElementById('result').innerHTML = type == 'INFP' && document.getElementById('nocry').checked? 'invalid input':type;
+				};
+			</script>
+	</head>
+	
+	<body>
+		<h3> An MBTI test of high accuracy </h3>
+		<ol>
+
+			<li>
+				My preference of spending time alone is stronger than my preference of spending time with people.
+				<div>
+					<input type="radio" name="letter1" id="I" value="I"/>
+					<label for="I">agree</label><br>
+
+					<input type="radio" name="letter1" id="letter1_x" value="x"/>
+					<label for="letter1_x">neutral</label><br>
+
+					<input type="radio" name="letter1" id="E" value="E"/>
+					<label for="E">disagree</label><br>
+				</div>
+			</li>
+
+			<li>
+				I prefer using my senses over using my intuition.
+				<div>
+					<input type="radio" name="letter2" id="S" value="S"/>
+					<label for="S">agree</label><br>
+
+					<input type="radio" name="letter2" id="letter2_x" value="x"/>
+					<label for="letter2_x">neutral</label><br>
+
+					<input type="radio" name="letter2" id="N" value="N"/>
+					<label for="N">disagree</label><br>
+				</div>
+			</li>
+
+			<li>
+				I am more of a feely kind of person rather than a thinky kind of person.
+				<div>
+					<input type="radio" name="letter3" id="F" value="F"/>
+					<label for="F">agree</label><br>
+
+					<input type="radio" name="letter3" id="letter3_x" value="x"/>
+					<label for="letter3_x">neutral</label><br>
+
+					<input type="radio" name="letter3" id="T" value="T"/>
+					<label for="T">disagree</label><br>
+				</div>
+			</li>
+
+			<li>
+				When facing a situational situation, I focus on perceiving instead of judging.
+				<div>
+					<input type="radio" name="letter4" id="P" value="P"/>
+					<label for="P">agree</label><br>
+
+					<input type="radio" name="letter4" id="letter4_x" value="x"/>
+					<label for="letter4_x">neutral</label><br>
+
+					<input type="radio" name="letter4" id="J" value="J"/>
+					<label for="J">disagree</label><br>
+				</div>
+			</li>
+
+			<li>
+				I cried today.
+				<div>
+					<input type="radio" name="validation" id="cry" value=""/>
+					<label for="cry">agree</label><br>
+
+					<input type="radio" name="validation" id="nocry" value=""/>
+					<label for="nocry">disagree</label><br>
+				</div>
+			</li>
+		</ol>
+
+		<div>
+			Your type is: <span id="result"></span>
+		</div>
+
+		<script>
+			main("thoughts", "prayers");
+		</script>
+	</body>
+</html>
+
